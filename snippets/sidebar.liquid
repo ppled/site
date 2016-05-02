@@ -1,0 +1,102 @@
+{% capture active_url %}{% if template == "index" %}/{% elsif template contains "collection" %}{% if collection.handle %}/collections/{{ collection.handle }}{% elsif collection.current_type %}{{ collection.current_type | url_for_type }}{% elsif collection.current_vendor %}{{ collection.current_vendor | url_for_vendor }}{% endif %}{% elsif template contains "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template contains "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% elsif template == "article" %}{{ article.url }}{% endif %}{% endcapture %}
+
+{% comment %}
+  Blank state
+{% endcomment %}
+{% if linklists[settings.sidebar_linklist_1].links.size == 0 %}
+  <div class="section-header sidebar-module">
+    <p class="section-header__title h4">{{ 'layout.sidebar_onboarding.shop_by_collection' | t }}</p>
+  </div>
+  {{ 'layout.sidebar_onboarding.shop_by_collection_description_html' | t }}
+{% endif %}
+
+{% for i in (1..5) %}
+  {% capture setting_key %}sidebar_linklist_{{ i }}{% endcapture %}
+  {% assign sidebar_linklist_handle = settings[setting_key] %}
+  {% if linklists[sidebar_linklist_handle].links.size > 0 %}
+    <nav class="sidebar-module">
+      <div class="section-header">
+        <p class="section-header__title h4">{{ linklists[sidebar_linklist_handle].title }}</p>
+      </div>
+      <ul class="sidebar-module__list">
+        {% for link in linklists[sidebar_linklist_handle].links %}
+          {% include 'sidebar-partial' %}
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+{% endfor %}
+
+{% if settings.sidebar_type_enable and shop.types.size > 0 %}
+  <nav class="sidebar-module">
+    <div class="section-header">
+      <p class="section-header__title h4">{{ 'layout.sidebar.shop_by_type' | t }}</p>
+    </div>
+    <ul class="sidebar-module__list">
+      {% for type in shop.types %}
+        <li{% if forloop.index > 8 %} class="sidebar-module__hidden-item"{% endif %}><a{% if collection.current_type == type %} class="is-active"{% endif %} href="{{ type | url_for_type }}">{{ type }}</a></li>
+
+        {% if forloop.index > 8 %}
+          {% assign viewmoreTypes = true %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if viewmoreTypes %}
+      <button class="text-link sidebar-module__viewmore">
+        <span class="sidebar-module__expand">{{ 'layout.sidebar.view_more' | t }}</span>
+        <span class="sidebar-module__collapse">{{ 'layout.sidebar.view_less' | t }}</span>
+      </button>
+    {% endif %}
+  </nav>
+{% endif %}
+
+{% if settings.sidebar_vendor_enable and shop.vendors.size > 0 %}
+  <nav class="sidebar-module">
+    <div class="section-header">
+      <p class="section-header__title h4">{{ 'layout.sidebar.shop_by_vendor' | t }}</p>
+    </div>
+    <ul class="sidebar-module__list">
+      {% for vendor in shop.vendors %}
+        <li{% if forloop.index > 8 %} class="sidebar-module__hidden-item"{% endif %}><a{% if collection.current_vendor == vendor %} class="is-active"{% endif %} href="{{ vendor | url_for_vendor }}">{{ vendor }}</a></li>
+
+        {% if forloop.index > 8 %}
+          {% assign viewmoreVendors = true %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if viewmoreVendors %}
+      <button class="text-link sidebar-module__viewmore">
+        <span class="sidebar-module__expand">{{ 'layout.sidebar.view_more' | t }}</span>
+        <span class="sidebar-module__collapse">{{ 'layout.sidebar.view_less' | t }}</span>
+      </button>
+    {% endif %}
+  </nav>
+{% endif %}
+
+{% if settings.sidebar_articles_enable and blogs[settings.sidebar_articles_blog].articles.size > 0 %}
+  <nav class="sidebar-module">
+    <div class="section-header">
+      <p class="section-header__title h4">{{ 'layout.sidebar.recent_articles' | t }}</p>
+    </div>
+    <ul class="sidebar-module__list">
+      {% for article in blogs[settings.sidebar_articles_blog].articles limit:4 %}
+        <li class="sidebar-module__article">
+          <a href="{{ article.url }}"{% if article.url == active_url %} class="is-active"{% endif %}>{{ article.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
+
+{% if settings.sidebar_content_enable %}
+  <nav class="sidebar-module">
+    <div class="section-header">
+      <p class="section-header__title h4">{{ pages[settings.sidebar_content_page].title }}</p>
+    </div>
+    <div>
+      {{ pages[settings.sidebar_content_page].content }}
+    </div>
+  </nav>
+{% endif %}

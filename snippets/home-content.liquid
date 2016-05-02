@@ -1,0 +1,8 @@
+{% if settings.home_page_content != empty %}
+  <div class="section-header section-header--large">
+    <h2 class="section-header__title h4">{{ pages[settings.home_page_content].title }}</h2>
+  </div>
+  <div class="rte">
+    {{ pages[settings.home_page_content].content }}
+  </div>
+{% endif %}

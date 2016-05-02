@@ -1,0 +1,95 @@
+{% paginate collection.products by 20 %}
+
+<header class="section-header section-header--large">
+  <h1 class="section-header__title section-header__title--left">{{ collection.title }}</h1>
+  <div class="section-header__link--right">
+    {% if settings.collections_sort_enable %}
+      {% include 'collection-sorting' %}
+    {% endif %}
+    {% if settings.collections_views_enable %}
+      {% include 'collection-views' %}
+    {% endif %}
+  </div>
+</header>
+
+{% if settings.collections_tags_enable %}
+  {% include 'collection-tags' %}
+{% endif %}
+
+{% if collection.description != blank %}
+  <div class="rte rte--header">
+    {{ collection.description }}
+  </div>
+  <hr>
+{% endif %}
+
+<div class="grid-uniform grid-link__container">
+
+  {% for product in collection.products %}
+
+    {% include 'product-grid-item' %}
+
+  {% else %}
+
+    {% if shop.products_count == 0 %}
+      {% unless emptyState %}
+        {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+        {% assign emptyState = true %}
+      {% endunless %}
+
+      <div class="grid__item">
+        <div class="helper-section">
+          <div class="helper-note">
+            <span class="helper-icon"></span>
+            <h3>{{ 'home_page.onboarding.modal_title' | t }}</h3>
+            <p>{{ 'home_page.onboarding.no_products_collection' | t }}</p>
+            <p><a class="admin-btn-primary" href="/admin/products/new">{{ 'home_page.onboarding.add_product' | t }}</a></p>
+          </div>
+
+          <div class="grid-uniform helper-content">
+            {% assign index = 1 %}
+            {% for i in (1..8) %}
+              {% case i %}
+                {% when 7 %}
+                  {% assign index = 1 %}
+                {% when 8 %}
+                  {% assign index = 2 %}
+              {% endcase %}
+              <div class="grid__item one-half large--one-quarter">
+                <a href="/admin/products" class="grid-link">
+                  <span class="grid-link__image grid-link__image--product">
+                    <span class="grid-link__image-centered">
+                      {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ index }}.png{% endcapture %}
+                      {{ imageUrl | img_tag }}
+                    </span>
+                  </span>
+                  <p class="grid-link__title">{{ 'home_page.onboarding.product_title' | t }}</p>
+                  <p class="grid-link__meta">
+                    <strong>$19.99</strong>
+                  </p>
+                </a>
+              </div>
+              {% assign index = index | plus: 1 %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="grid__item">
+        <p><em>{{ 'collections.general.no_matches' | t }}</em></p>
+      </div>
+    {% endif %}
+
+  {% endfor %}
+
+</div>
+
+{% if paginate.pages > 1 %}
+  <hr>
+
+  <div class="text-center">
+    {% include 'pagination-custom' %}
+  </div>
+{% endif %}
+
+{% endpaginate %}

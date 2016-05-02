@@ -1,0 +1,83 @@
+<ul id="MobileNav" class="mobile-nav large--hide">
+  
+  {% for link in linklists.main-menu.links %}
+  {% assign child_list_handle = link.title | handleize %}
+  <li class="mobile-nav__link" aria-haspopup="true">
+    {% if linklists[child_list_handle].links != blank %}
+      <a href="{{ link.url }}" class="mobile-nav__sublist-trigger">
+        {{ link.title }}
+        {% include 'mobile-nav-icons' %}
+      </a>
+      <ul class="mobile-nav__sublist">  
+        {% for link in linklists[child_list_handle].links %}
+          <li class="mobile-nav__sublist-link">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <a href="{{ link.url }}" class="mobile-nav">
+        {{ link.title }}
+      </a>
+    {% endif %}
+  </li>
+  {% endfor %}
+  {% if settings.sidebar_enable %}
+    {% for i in (1..5) %}
+      {% capture setting_key %}sidebar_linklist_{{ i }}{% endcapture %}
+      {% assign mobile_linklist_handle = settings[setting_key] %}
+      {% assign mobile_nav_title = linklists[mobile_linklist_handle].title %}
+      {% assign mobile_nav_links = linklists[mobile_linklist_handle].links %}
+      {% if linklists[mobile_linklist_handle].links.size > 0 %}
+        {% include 'mobile-nav-partial' %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if settings.sidebar_type_enable and shop.types.size > 0 %}
+      {% assign mobile_nav_title = 'layout.sidebar.shop_by_type' | t %}
+      {% assign mobile_nav_links = shop.types %}
+      {% assign group_url = '/collections/types?q=' %}
+      {% include 'mobile-nav-partial' with group_url %}
+    {% endif %}
+    
+    {% if settings.sidebar_vendor_enable and shop.vendors.size > 0 %}
+      {% assign mobile_nav_title = 'layout.sidebar.shop_by_vendor' | t %}
+      {% assign mobile_nav_links = shop.vendors %}
+      {% assign group_url = '/collections/vendors?q=' %}
+      {% include 'mobile-nav-partial' with group_url %}
+    {% endif %}
+  
+    {% if settings.sidebar_articles_enable and blogs[settings.sidebar_articles_blog].articles.size > 0 %}
+      {% assign mobile_nav_title = 'layout.sidebar.recent_articles' | t %}
+      {% assign mobile_nav_links = blogs[settings.sidebar_articles_blog].articles %}
+      {% include 'mobile-nav-partial' %}
+    {% endif %}
+  {% endif %}
+
+  {% if shop.customer_accounts_enabled %}
+    {% if customer %}
+      <li class="mobile-nav__link">
+        <a href="/account">{{ 'layout.customer.account' | t }}</a>
+      </li>
+      <li class="mobile-nav__link">
+        {{ 'layout.customer.log_out' | t | customer_logout_link }}
+      </li>
+    {% else %}
+      <li class="mobile-nav__link">
+        {{ 'layout.customer.log_in' | t | customer_login_link }}
+      </li>
+      <li class="mobile-nav__link">
+        {{ 'layout.customer.create_account' | t | customer_register_link }}
+      </li>
+    {% endif %}
+  {% endif %}
+  
+  <li class="mobile-nav__link">
+    {% if settings.header_search_enable %}
+      <div class="header-bar__module header-bar__search">
+        {% include 'search-bar' with 'header' %}
+      </div>
+    {% endif %}
+  </li>
+  
+</ul>

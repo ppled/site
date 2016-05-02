@@ -1,0 +1,19 @@
+{% comment %}
+  Toggle between collection.liquid and collection.list.liquid with the
+  ?view= parameter.
+{% endcomment %}
+
+<div class="collection-view">
+  <button type="button" title="Grid view" class="change-view{% unless template contains 'list' %} change-view--active{% endunless %}" data-view="grid">
+    <span class="icon-fallback-text">
+      <span class="icon icon-grid-view" aria-hidden="true"></span>
+      <span class="fallback-text">Grid View</span>
+    </span>
+  </button>
+  <button type="button" title="List view" class="change-view{% if template contains 'list' %} change-view--active{% endif %}" data-view="list">
+    <span class="icon-fallback-text">
+      <span class="icon icon-list-view" aria-hidden="true"></span>
+      <span class="fallback-text">List View</span>
+    </span>
+  </button>
+</div>

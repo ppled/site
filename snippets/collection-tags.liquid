@@ -1,0 +1,31 @@
+{% if collection.all_tags.size > 0 %}
+  <nav class="tags">
+    <ul class="inline-list small--text-center">
+      <li {% unless current_tags %} class="tag--active"{% endunless %}>
+        {% comment %}Good for /collections/all collection and regular collections{% endcomment %}
+        {% if collection.handle %}
+          {% capture collection_url %}/collections/{{ collection.handle }}{% if collection.sort_by %}?sort_by={{ collection.sort_by }}{% endif %}{% endcapture %}
+        {% comment %}Good for automatic type collections{% endcomment %}
+        {% elsif collection.current_type %}
+          {% assign collection_url = collection.current_type | url_for_type | sort_by: collection.sort_by  %}
+        {% comment %}Good for automatic vendor collections{% endcomment %}
+        {% elsif collection.current_vendor %}
+          {% assign collection_url = collection.current_vendor | url_for_vendor | sort_by: collection.sort_by %}
+        {% endif %}
+        <a href="{{ collection_url }}">{{ 'collections.sorting.all_tags' | t }}</a>
+      </li>
+      {% for tag in collection.all_tags %}
+        {% if current_tags contains tag %}
+          <li class="tag--active">
+            {{ tag | link_to_remove_tag: tag }}
+          </li>
+        {% else %}
+          <li>
+            {{ tag | link_to_tag: tag }}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+  <hr>
+{% endif %}

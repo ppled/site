@@ -1,0 +1,28 @@
+{% if linklists[link.handle] == empty %}
+  <li>
+    <a href="{{ link.url }}" class="{% if link.url == active_url %} is-active{% endif %}{% if template == 'article' and link.url == blog.url %} is-active{% endif %}">{{ link.title }}</a>
+  </li>
+{% else %}
+  <li class="sidebar-sublist{% unless template == 'index' %}{% if link.url == active_url %} is-open{% endif %}{% endunless %}">
+    <div class="sidebar-sublist__trigger-wrap">
+      <a href="{{ link.url }}" class="sidebar-sublist__has-dropdown {% unless template == 'index' %}{% if link.url == active_url %} is-active{% endif %}{% endunless %}">
+        {{ link.title }}
+      </a>
+      <button type="button" class="icon-fallback-text sidebar-sublist__expand">
+        <span class="icon icon-plus" aria-hidden="true"></span>
+        <span class="fallback-text">+</span>
+      </button>
+      <button type="button" class="icon-fallback-text sidebar-sublist__contract">
+        <span class="icon icon-minus" aria-hidden="true"></span>
+        <span class="fallback-text">-</span>
+      </button>
+    </div>
+    <ul class="sidebar-sublist__content">
+      {% for link in linklists[link.handle].links %}
+        <li>
+          <a href="{{ link.url }}" {% unless template == 'index' %}{% if link.active %}class="is-active"{% endif %}{% endunless %}>{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endif %}

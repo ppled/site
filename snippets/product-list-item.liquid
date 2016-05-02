@@ -1,0 +1,42 @@
+{% unless current_collection == blank %}
+  {% assign current_collection = collection %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+  {% assign sold_out = false %}
+{% endif %}
+
+<div class="list-view__product small--text-center">
+  <div class="grid">
+    <div class="grid__item {% if settings.sidebar_enable %}large--one-fifth{% else %}large--one-sixth{% endif %} large--display-table-cell medium--one-third">
+      <a href="{{ product.url | within: current_collection }}" class="grid-link__image">
+        <span class="grid-link__image-centered">
+          <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="{{ product.featured_image.alt | escape }}">
+        </span>
+      </a>
+    </div>
+    <div class="grid__item {% if settings.sidebar_enable %}large--three-fifths{% else %}large--two-thirds{% endif %} large--display-table-cell medium--two-thirds">
+      <a href="{{ product.url | within: current_collection }}">{{ product.title }}</a>
+    </div>
+    <div class="grid__item {% if settings.sidebar_enable %}large--one-fifth{% else %}large--one-sixth{% endif %} large--display-table-cell medium--two-thirds">
+      {% comment %}
+        You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+        if your variants have different prices.
+      {% endcomment %}
+      {% capture price %}<strong>{{ product.price | money }}</strong>{% endcapture %}
+      {% if product.price_varies %}{{ 'products.general.from_html' | t: price: price }}{% else %}{{ price }}{% endif %}
+      {% if sold_out %}
+        <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+      {% endif %}
+      {% if on_sale %}
+        <br><s class="grid-link__sale_price">{{ product.compare_at_price | money }}</s>
+      {% endif %}
+    </div>
+  </div>
+</div>
