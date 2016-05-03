@@ -1,0 +1,47 @@
+{% comment %}
+    Get current collection
+{% endcomment %}
+{% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+    {% assign found_a_collection = false %}
+
+    {% for col in product.collections %}
+        {% if found_a_collection == false and col.handle != 'frontpage' and col.handle != 'all' and col.all_products_count > 1 %}
+            {% assign found_a_collection = true %}
+            {% assign collection = col %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% comment %}
+    Get accessories collection
+{% endcomment %}
+{% if collection %}
+    {% assign found_accessories = false %}
+    {% assign accessories_handle = collection.handle | append: "-accessories" %}
+
+    {% for col in collections %}
+        {% if found_accessories == false and col.handle == accessories_handle %}
+            {% assign found_accessories = true %}
+            {% assign accessories = col %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% comment %}
+    Output accessories 
+{% endcomment %}
+{% if accessories and settings.product_accessories_enable %}
+    {% assign output_collection = accessories %}
+    {% assign output_title = "Product Accessories" %}
+    {% include 'additional-products-output' %}
+{% endif %}
+
+{% comment %}
+    Output related products 
+{% endcomment %}
+{% if collection and settings.product_related_enable %}
+    {% assign output_collection = collection %}
+    {% assign output_title = 'products.general.related_products_title' | t %}
+    {% assign output_hide_current = true %}
+    {% include 'additional-products-output' %}
+{% endif %}

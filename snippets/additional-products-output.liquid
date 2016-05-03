@@ -1,0 +1,40 @@
+{% assign number_of_products = 4 %}
+{% assign number_of_products_to_fetch = number_of_products | plus: 1 %}
+
+{% if output_hide_current == null %}
+    {% assign output_hide_current = false %}
+{% endif %}
+
+{% comment %}
+    output products
+{% endcomment %}
+{% if output_collection and output_collection.products_count > 1 %}
+
+    <hr class="hr--clear hr--small">
+    <div class="section-header section-header--large">
+        <h4 class="section-header__title">{{ output_title }}</h4>
+        {% if output_collection.products_count > 4 %}
+            <div class="section-header__link--right medium-down--hide">
+                <a href="{{ output_collection.url }}" title="View all Products">View all</a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="grid-uniform grid-link__container">
+        {% assign current_product = product %}
+        {% assign current_product_found = false %}
+        {% for product in output_collection.products limit: number_of_products_to_fetch %}
+            {% if output_hide_current and product.handle == current_product.handle %}
+                {% assign current_product_found = true %}
+            {% else %}
+                {% unless output_hide_current and current_product_found == false and forloop.last %}
+                    {% assign grid_item_width = 'large--one-quarter medium--one-quarter small--one-half' %}
+                    {% include 'product-grid-item' %}
+                {% endunless %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% assign output_collection = null %}
+{% assign output_title = null %}
+{% assign output_hide_current = null %}

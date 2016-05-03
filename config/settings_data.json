@@ -89,6 +89,7 @@
     "product_vendor_enable": false,
     "product_quantity_enable": true,
     "product_image_zoom_enable": true,
+    "product_accessories_enable": true,
     "product_related_enable": true,
     "product_reviews_enable": true,
     "product_reviews_star_color": "#f5bc2a",

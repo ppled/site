@@ -115,9 +115,7 @@
         {% include 'social-sharing' %}
     {% endif %}
 
-    {% if settings.product_related_enable %}
-        {% include 'related-products' %}
-    {% endif %}
+    {% include 'additional-products' %}
 
 </div>
 
@@ -139,11 +137,6 @@
 
     jQuery(function($) {
         var productInfo = {{ product | json }};
-
-        // init addons
-        /*productInfo = PP.ProductAddons('productSelect', {
-            product: productInfo
-        });*/
 
         new Shopify.OptionSelectors('productSelect', {
             product: productInfo,

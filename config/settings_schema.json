@@ -1239,6 +1239,11 @@
       },
       {
         "type": "checkbox",
+        "id": "product_accessories_enable",
+        "label": "Enable product accessories"
+      },
+      {
+        "type": "checkbox",
         "id": "product_related_enable",
         "label": "Enable related products"
       },
