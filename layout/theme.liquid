@@ -39,6 +39,7 @@
     <!-- CSS ================================================== -->
     {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
     {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
     {{ 'custom.scss.css' | asset_url | stylesheet_tag }}
 
     {% include 'google-fonts' %}
@@ -341,6 +342,14 @@
 
     {% if template contains 'product' and settings.product_image_zoom_enable %}
         {{ 'jquery.zoom.min.js' | asset_url | script_tag }}
+    {% endif %}
+
+    {% if template contains 'gallery' %}
+        {{ 'jquery.fancybox.min.js' | asset_url | script_tag }}
+
+        <script>
+            $('.fancybox').fancybox();
+        </script>
     {% endif %}
 
 </body>

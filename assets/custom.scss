@@ -20,6 +20,18 @@
     float: left;
 }
 
+.photo-gallery {
+
+    a {
+        color: inherit;
+    }
+
+    .grid-link__title {
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
 @media screen and (min-width: 601px) and (max-width: 768px) {
 
     .grid-link__image-centered {

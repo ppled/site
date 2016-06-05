@@ -1,0 +1,24 @@
+<header class="section-header">
+    <h1 class="section-header__title">{{ page.title }}</h1>
+</header>
+
+<div class="rte">
+    {{ page.content }}
+</div>
+
+<hr>
+
+<div id="photo-gallery" class="photo-gallery grid-uniform grid-link__container">
+    {% for link in linklists.photo-gallery.links %}
+        <div class="grid__item large--one-quarter medium-down--one-half">
+            <a class="grid-link fancybox" href="{{ link.url }}" rel="gallery" title="{{ link.title | escape }}">
+                <span class="grid-link__image">
+                    <span class="grid-link__image-centered">
+                        <img src="{{ link.url }}" alt="{{ link.title | escape }}">
+                    </span>
+                </span>
+                <p class="grid-link__title">{{ link.title | escape }}</p>
+            </a>
+        </div>
+    {% endfor %}
+</div>
