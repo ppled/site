@@ -6,7 +6,7 @@
     },
     "404": {
       "title": "404 Seite nicht gefunden",
-      "subtext_html": "Die von Ihnen angeforderte Seite existiert nicht. Klicken Sie <a href=\"\/collections\/all\">hier<\/a>, um den Einkauf fortzusetzen."
+      "subtext_html": "Die von Ihnen angeforderte Seite existiert nicht. Klicken Sie <a href=\"/collections/all\">hier</a>, um den Einkauf fortzusetzen."
     },
     "password_page": {
       "opening_soon": "Eröffnet demnächst",
@@ -20,7 +20,7 @@
       "signup_form_email_placeholder": "Ihre E-Mail-Adresse",
       "signup_form_submit": "Abschicken",
       "signup_form_success": "Wir senden Ihnen eine E-Mail, kurz bevor wir eröffnen!",
-      "admin_link_html": "Sind Sie der Geschäftsinhaber? <a href=\"\/admin\" class=\"text-link\">Melden Sie sich hier an<\/a>",
+      "admin_link_html": "Sind Sie der Geschäftsinhaber? <a href=\"/admin\" class=\"text-link\">Melden Sie sich hier an</a>",
       "password_link": "Mit Passwort betreten",
       "powered_by_shopify_html": "Dieser Shop wird mit Hilfe von {{ shopify }} betrieben werden",
       "close": "Schließen (Esc)"
@@ -78,7 +78,7 @@
       "update": "Einkaufswagen aktualisieren",
       "checkout": "Zur Kasse",
       "empty": "Ihr Einkaufswagen ist im Moment leer.",
-      "continue_browsing_html": "Mit der Suche <a href=\"\/collections\/all\">hier<\/a> fortfahren.",
+      "continue_browsing_html": "Mit der Suche <a href=\"/collections/all\">hier</a> fortfahren.",
       "view_cart": "Einkaufswagen ansehen",
       "close_cart": "Einkaufswagen schließen"
     },
@@ -229,11 +229,11 @@
     },
     "onboarding": {
       "modal_title": "Fast fertig...",
-      "no_products_html": "Sie haben keine Artikel in Ihrer Startseiten-Zusammenstellung. Dieser Platzhalter verschwindet, wenn Sie <a href=\"\/admin\/collections?tutorial=Frontpage\">dieser Zusammenstellung einen Artikel hinzufügen<\/a>.",
+      "no_products_html": "Sie haben keine Artikel in Ihrer Startseiten-Zusammenstellung. Dieser Platzhalter verschwindet, wenn Sie <a href=\"/admin/collections?tutorial=Frontpage\">dieser Zusammenstellung einen Artikel hinzufügen</a>.",
       "no_products_collection": "Es sind noch keine Produkte vorhanden, doch sobald Sie welche hinzufügen, werden sie hier angezeigt, ganz gleich, ob sie zu einer Kollektion gehören oder nicht.",
       "add_product": "Fügen Sie ein Produkt",
       "product_title": "Beispielhafter Produkttitel",
-      "no_collections_html": "Sie haben hier keine Zusammenstellungen zum Anzeigen. <a href=\"\/admin\/custom_collections\">Fügen Sie ein paar Zusammenstellungen<\/a> zur Standard-Startseite hinzu.",
+      "no_collections_html": "Sie haben hier keine Zusammenstellungen zum Anzeigen. <a href=\"/admin/custom_collections\">Fügen Sie ein paar Zusammenstellungen</a> zur Standard-Startseite hinzu.",
       "add_collection": "Fügen Sie eine Sammlung",
       "collection_title": "Beispielhafter Zusammenstellungstitel"
     }
@@ -269,7 +269,7 @@
     },
     "sidebar_onboarding": {
       "shop_by_collection": "Nach Sammlung einkaufen",
-      "shop_by_collection_description_html": "<p>Verknüpfen Sie Ihre individuellen Sammlungen, indem Sie eine neue Linkliste im Bereich <strong>Navigation<\/strong> der Administration erstellen.<\/p> <p>Sie können sie dann hier anzeigen lassen, indem Sie Ihre neue Linkliste unter <strong>Customize Theme \/ Sidebar<\/strong> auswählen.<\/p>"
+      "shop_by_collection_description_html": "<p>Verknüpfen Sie Ihre individuellen Sammlungen, indem Sie eine neue Linkliste im Bereich <strong>Navigation</strong> der Administration erstellen.</p> <p>Sie können sie dann hier anzeigen lassen, indem Sie Ihre neue Linkliste unter <strong>Customize Theme / Sidebar</strong> auswählen.</p>"
     }
   },
   "products": {
@@ -302,7 +302,7 @@
       "add_to_apple_wallet": "Hinzufügen zu Apple Wallet"
     }
   },
-  "date_formats": {
-    "month_day_year": "%B %d, %Y"
+  "date_formats":{
+    "month_day_year":"%B %d, %Y"
   }
 }

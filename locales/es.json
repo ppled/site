@@ -6,7 +6,7 @@
     },
     "404": {
       "title": "404 Página no encontrada",
-      "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"\/collections\/all\">aquí<\/a> para continuar la compra."
+      "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"/collections/all\">aquí</a> para continuar la compra."
     },
     "password_page": {
       "opening_soon": "Apertura Próximamente",
@@ -20,7 +20,7 @@
       "signup_form_email_placeholder": "Tu dirección de correo electrónico",
       "signup_form_submit": "Enviar",
       "signup_form_success": "¡Te enviaremos un correo electrónico antes de inaugurar!",
-      "admin_link_html": "¿Eres el dueño de la tienda? <a href=\"\/admin\" class=\"text-link\">Regístrate aquí<\/a>",
+      "admin_link_html": "¿Eres el dueño de la tienda? <a href=\"/admin\" class=\"text-link\">Regístrate aquí</a>",
       "password_link": "Entrar usando contraseña",
       "powered_by_shopify_html": "Esta tienda estará impulsada por {{ shopify }}",
       "close": "Cerrar (esc)"
@@ -78,7 +78,7 @@
       "update": "Actualizar carrito",
       "checkout": "Finalizar pedido",
       "empty": "Su carrito actualmente está vacío.",
-      "continue_browsing_html": "Continúe explorando <a href=\"\/collections\/all\">aquí<\/a>.",
+      "continue_browsing_html": "Continúe explorando <a href=\"/collections/all\">aquí</a>.",
       "view_cart": "Ver carrito",
       "close_cart": "Cerrar carrito"
     },
@@ -229,11 +229,11 @@
     },
     "onboarding": {
       "modal_title": "Casi allí...",
-      "no_products_html": "No tiene productos en su colección de portada. Este indicador aparecerá hasta que <a href=\"\/admin\/collections?tutorial=Frontpage\">agregue un producto a esta colección<\/a>.",
+      "no_products_html": "No tiene productos en su colección de portada. Este indicador aparecerá hasta que <a href=\"/admin/collections?tutorial=Frontpage\">agregue un producto a esta colección</a>.",
       "no_products_collection": "Todavía no hay productos pero, una vez que comience a añadirlos, se mostrarán aquí sin importar si están en una colección.",
       "add_product": "Añadir un producto",
       "product_title": "Ejemplo título de producto",
-      "no_collections_html": "No tiene colecciones para mostrar aquí. <a href=\"\/admin\/custom_collections\">Agregue algunas colecciones<\/a> que acompañen a la Portada por defecto.",
+      "no_collections_html": "No tiene colecciones para mostrar aquí. <a href=\"/admin/custom_collections\">Agregue algunas colecciones</a> que acompañen a la Portada por defecto.",
       "add_collection": "Añadir una colección",
       "collection_title": "Ejemplo título de colección"
     }
@@ -269,7 +269,7 @@
     },
     "sidebar_onboarding": {
       "shop_by_collection": "Magasiner par collection",
-      "shop_by_collection_description_html": "<p>Haga un enlace con sus colecciones individuales creando una nueva lista enlazada en la sección de <strong>Navegación<\/strong> del administrador.<\/p><p>Luego puede hacerla aparecer aquí seleccionando su nueva lista enlazada bajo <strong>Personalizar tema \/ Barra lateral<\/strong>.<\/p>"
+      "shop_by_collection_description_html": "<p>Haga un enlace con sus colecciones individuales creando una nueva lista enlazada en la sección de <strong>Navegación</strong> del administrador.</p><p>Luego puede hacerla aparecer aquí seleccionando su nueva lista enlazada bajo <strong>Personalizar tema / Barra lateral</strong>.</p>"
     }
   },
   "products": {
@@ -302,7 +302,7 @@
       "add_to_apple_wallet": "Añadir a Apple Wallet"
     }
   },
-  "date_formats": {
-    "month_day_year": "%d de %B, %Y"
+  "date_formats":{
+    "month_day_year":"%d de %B, %Y"
   }
 }

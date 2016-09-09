@@ -38,6 +38,12 @@ timber.init = function () {
   timber.autoResponsiveElements();
   timber.collectionViews();
   timber.productImageZoom();
+
+  {% if settings.product_image_effect == 'image-zoom' %}
+    // image zoom
+    timber.productImageSwitch();
+    timber.productImageZoom();
+  {% endif %}
 };
 
 timber.accessibleNav = function () {

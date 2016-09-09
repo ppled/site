@@ -6,7 +6,7 @@
     },
     "404": {
       "title": "404 - Page non trouvée",
-      "subtext_html": "Cette page n'est pas disponible. <a href=\"\/collections\/all\">Retourner au magasinage<\/a>"
+      "subtext_html": "Cette page n'est pas disponible. <a href=\"/collections/all\">Retourner au magasinage</a>"
     },
     "password_page": {
       "opening_soon": "Bientôt ouvert",
@@ -20,7 +20,7 @@
       "signup_form_email_placeholder": "Votre courriel",
       "signup_form_submit": "Soumettre",
       "signup_form_success": "Nous vous ferons parvenir un courriel juste avant l'ouverture!",
-      "admin_link_html": "Êtes-vous le propriétaire de la boutique? <a href=\"\/admin\" class=\"text-link\">Connectez-vous ici<\/a>",
+      "admin_link_html": "Êtes-vous le propriétaire de la boutique? <a href=\"/admin\" class=\"text-link\">Connectez-vous ici</a>",
       "password_link": "Entrer avec un mot de passe",
       "powered_by_shopify_html": "Cette boutique sera propulsée par {{ shopify }}",
       "close": "Fermer (Esc)"
@@ -78,7 +78,7 @@
       "update": "Mettre à jour",
       "checkout": "Procéder au paiement",
       "empty": "Votre panier est vide.",
-      "continue_browsing_html": "<a href=\"\/collections\/all\">Retourner au magasinage<\/a>.",
+      "continue_browsing_html": "<a href=\"/collections/all\">Retourner au magasinage</a>.",
       "view_cart": "Voir le panier",
       "close_cart": "Fermer le panier"
     },
@@ -229,11 +229,11 @@
     },
     "onboarding": {
       "modal_title": "Nous y sommes presque...",
-      "no_products_html": "Vous n'avez pas de produit dans votre collection Frontpage. Ce message apparaitra jusqu'à ce qu'un produit soit <a href=\"\/admin\/collections?tutorial=Frontpage\">ajouté à cette collection<\/a>.",
+      "no_products_html": "Vous n'avez pas de produit dans votre collection Frontpage. Ce message apparaitra jusqu'à ce qu'un produit soit <a href=\"/admin/collections?tutorial=Frontpage\">ajouté à cette collection</a>.",
       "no_products_collection": "Il n'y a aucun produit pour l'instant, mais dès que vous commencerez à les ajouter, ils s'afficheront ici, qu'ils soient dans une collection ou non.",
       "add_product": "Ajouter un produit",
       "product_title": "Titre du produit",
-      "no_collections_html": "Vous n'avez pas de collection à afficher ici. <a href=\"\/admin\/custom_collections\">Ajoutez une ou plusieurs collections<\/a> pour compléter la page d'accueil par défaut.",
+      "no_collections_html": "Vous n'avez pas de collection à afficher ici. <a href=\"/admin/custom_collections\">Ajoutez une ou plusieurs collections</a> pour compléter la page d'accueil par défaut.",
       "add_collection": "Ajouter une collection",
       "collection_title": "Titre de la collection"
     }
@@ -269,7 +269,7 @@
     },
     "sidebar_onboarding": {
       "shop_by_collection": "Magasiner par collection",
-      "shop_by_collection_description_html": "<p>Ajoutez des liens vers chacune de vos collections en créant une nouvelle liste de liens depuis la section <strong>Navigation<\/strong> de votre panneau administratif.<\/p><p>Pour les afficher à cet endroit, vous n'avez qu'à sélectionner la nouvelle liste de liens depuis la section <strong>Customize Theme \/ Sidebar<\/strong>.<\/p>"
+      "shop_by_collection_description_html": "<p>Ajoutez des liens vers chacune de vos collections en créant une nouvelle liste de liens depuis la section <strong>Navigation</strong> de votre panneau administratif.</p><p>Pour les afficher à cet endroit, vous n'avez qu'à sélectionner la nouvelle liste de liens depuis la section <strong>Customize Theme / Sidebar</strong>.</p>"
     }
   },
   "products": {
@@ -302,7 +302,7 @@
       "add_to_apple_wallet": "Ajouter à Apple Wallet"
     }
   },
-  "date_formats": {
-    "month_day_year": "%d %B, %Y"
+  "date_formats":{
+    "month_day_year":"%d %B, %Y"
   }
 }

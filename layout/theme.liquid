@@ -52,7 +52,7 @@
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
     {{ 'modernizr.min.js' | asset_url | script_tag }}
     {{ 'handlebars.min.js' | asset_url | script_tag }}
-    {{ 'pp-lib.js' | asset_url | script_tag }}
+    {% comment %}{{ 'pp-runtime.js' | asset_url | script_tag }}{% endcomment %}
 
     {% comment %}
         If you store has customer accounts disabled, you can remove the following JS file
@@ -324,33 +324,39 @@
     {% if settings.ajax_cart_method != 'page' %}
         {% include 'ajax-cart-template' %}
         {{ 'ajaxify.js' | asset_url | script_tag }}
+
         <script>
-        jQuery(function($) {
-            ajaxifyShopify.init({
-                method: '{{ settings.ajax_cart_method }}',
-                wrapperClass: 'wrapper',
-                formSelector: '#AddToCartForm',
-                addToCartSelector: '#AddToCart',
-                cartCountSelector: '.cart-count',
-                toggleCartButton: '.cart-toggle',
-                btnClass: 'btn',
-                moneyFormat: {{ shop.money_format | json }}
+            jQuery(function($) {
+                ajaxifyShopify.init({
+                    method: '{{ settings.ajax_cart_method }}',
+                    wrapperClass: 'wrapper',
+                    formSelector: '#AddToCartForm',
+                    addToCartSelector: '#AddToCart',
+                    cartCountSelector: '.cart-count',
+                    toggleCartButton: '.cart-toggle',
+                    btnClass: 'btn',
+                    moneyFormat: {{ shop.money_format | json }}
+                });
             });
-        });
         </script>
     {% endif %}
 
-    {% if template contains 'product' and settings.product_image_zoom_enable %}
-        {{ 'jquery.zoom.min.js' | asset_url | script_tag }}
+    {% if template contains 'product' %}
+
+        {% if settings.product_image_effect == 'image-zoom' %}
+            {{ 'jquery.zoom.min.js' | asset_url | script_tag }}
+
+        {% elsif settings.product_image_effect == 'modal' %}
+            {{ 'jquery.fancybox.min.js' | asset_url | script_tag }}
+
+            <script>
+                $('.fancybox').fancybox({
+                    fitToView: true
+                });
+            </script>
+
+        {% endif %}
+
     {% endif %}
-
-    {% if template contains 'gallery' %}
-        {{ 'jquery.fancybox.min.js' | asset_url | script_tag }}
-
-        <script>
-            $('.fancybox').fancybox();
-        </script>
-    {% endif %}
-
 </body>
 </html>
