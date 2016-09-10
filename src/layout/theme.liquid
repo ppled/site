@@ -1,9 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
 <head>
 
     <!-- Basic page needs ================================================== -->
@@ -11,16 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     {% if settings.favicon_enable %}
-    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+        <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
     {% endif %}
 
     <!-- Title and description ================================================== -->
     <title>
-    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+        {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
     </title>
 
     {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
+        <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
     <!-- Social Meta Tags ================================================== -->
@@ -32,8 +32,8 @@
     <meta name="theme-color" content="{{ settings.color_primary }}">
 
     {% if settings.ajax_cart_method != 'page' %}
-    <!-- Ajaxify Cart Plugin ================================================== -->
-    {{ 'ajaxify.scss.css' | asset_url | stylesheet_tag }}
+        <!-- Ajaxify Cart Plugin ================================================== -->
+        {{ 'ajaxify.scss.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
     <!-- CSS ================================================== -->
@@ -52,7 +52,6 @@
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
     {{ 'modernizr.min.js' | asset_url | script_tag }}
     {{ 'handlebars.min.js' | asset_url | script_tag }}
-    {% comment %}{{ 'pp-runtime.js' | asset_url | script_tag }}{% endcomment %}
 
     {% comment %}
         If you store has customer accounts disabled, you can remove the following JS file
@@ -68,9 +67,11 @@
     {% include 'header-bar' %}
 
     <header class="site-header" role="banner">
+
         <div class="wrapper">
 
             <div class="grid--full large--display-table">
+
                 <div class="grid__item large--one-third large--display-table-cell">
                     {% if template == 'index' %}
                         <h1 class="site-header__logo large--left" itemscope itemtype="http://schema.org/Organization">
@@ -95,11 +96,11 @@
                         </p>
                     {% endif %}
                 </div>
+
                 <div class="grid__item large--two-thirds large--display-table-cell medium-down--hide">
                     {% include 'site-nav' %}
                 </div>
             </div>
-
         </div>
     </header>
 
@@ -294,9 +295,7 @@
                     </div>
                 {% endunless %}
             </div>
-
         </div>
-
     </footer>
 
     {% for i in (1..4) %}
