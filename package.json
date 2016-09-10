@@ -2,5 +2,7 @@
   "scripts": {
     "postinstall": "bower install"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
 }

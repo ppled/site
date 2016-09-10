@@ -1,3 +1,3 @@
 # Petersen Parts
 
-> Theme development build for [Petersen Parts](https://petersenparts.com)
+> Theme development for [Petersen Parts](https://petersenparts.com)

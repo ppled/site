@@ -1,3 +1,12 @@
 {
-  "devDependencies": {}
+  "name": "petersen-parts",
+  "devDependencies": {
+    "fancybox": "^2.1.5",
+    "flexslider": "^2.6.3",
+    "handlebars": "^1.3.0",
+    "jquery-zoom": "^1.7.18",
+    "magnific-popup": "^1.1.0",
+    "modernizr": "~2.8.2",
+    "timber": "2.0.2"
+  }
 }
