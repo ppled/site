@@ -13,13 +13,9 @@
         "magnific-popup": "dist/jquery.magnific-popup.js",
         "modernizr": "modernizr.js",
         "timber": [
-            "assets/ajaxify.*",
             "assets/fastclick.min.js",
-            "assets/ico-select.svg.liquid",
-            "assets/icons.*",
             "assets/respond.min.js",
-            "assets/respond-proxy.html",
-            "assets/timber.*"
+            "assets/respond-proxy.html"
         ]
     }
 }
