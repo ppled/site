@@ -39,4 +39,18 @@ gulp.task('copy-bower', () => {
         .pipe(gulp.dest('.build/assets'));
 });
 
-gulp.task('default', ['copy-bower']);
+gulp.task('copy-theme', () => {
+    const src = gulp.src([
+        'src/assets/css/*.scss.liquid',
+        'src/assets/img/*.jpg',
+        'src/assets/img/*.png',
+        'src/assets/js/*.js',
+        'src/assets/js/*.js.liquid'
+    ]);
+
+    return src
+        .pipe(gulp.dest('.build/assets'));
+});
+
+gulp.task('copy', ['copy-bower', 'copy-theme']);
+gulp.task('default', []);

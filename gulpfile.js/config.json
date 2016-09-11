@@ -10,7 +10,7 @@
         "handlebars": "handlebars.js",
         "jquery": "dist/jquery.js",
         "jquery-zoom": "jquery.zoom.js",
-        "magnific-popup": "jquery.magnific-popup.js",
+        "magnific-popup": "dist/jquery.magnific-popup.js",
         "modernizr": "modernizr.js",
         "timber": [
             "assets/ajaxify.*",
