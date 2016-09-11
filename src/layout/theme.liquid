@@ -49,9 +49,9 @@
 
     {% include 'oldIE-js' %}
 
-    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
-    {{ 'modernizr.min.js' | asset_url | script_tag }}
-    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {{ 'jquery.js' | asset_url | script_tag }}
+    {{ 'modernizr.js' | asset_url | script_tag }}
+    {{ 'handlebars.js' | asset_url | script_tag }}
 
     {% comment %}
         If you store has customer accounts disabled, you can remove the following JS file
@@ -306,7 +306,7 @@
     {% endfor %}
 
     {% if template contains 'index' and slider_home_enable %}
-        {{ 'jquery.flexslider.min.js' | asset_url | script_tag }}
+        {{ 'jquery.flexslider.js' | asset_url | script_tag }}
         {{ 'slider.js' | asset_url | script_tag }}
     {% endif %}
 
@@ -343,10 +343,10 @@
     {% if template contains 'product' %}
 
         {% if settings.product_image_effect == 'image-zoom' %}
-            {{ 'jquery.zoom.min.js' | asset_url | script_tag }}
+            {{ 'jquery.zoom.js' | asset_url | script_tag }}
 
         {% elsif settings.product_image_effect == 'modal' %}
-            {{ 'jquery.fancybox.min.js' | asset_url | script_tag }}
+            {{ 'jquery.fancybox.js' | asset_url | script_tag }}
 
             <script>
                 $('.fancybox').fancybox({
