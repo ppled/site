@@ -1,5 +1,5 @@
 node_modules
 bower_components
-.build
+.upload
 npm-debug.log
-shopify-config.json
+gulpfile.js/shopify.json

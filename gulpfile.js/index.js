@@ -1,11 +1,16 @@
 'use strict';
 
 const config = require('./config.json');
+const del = require('del');
 const gulp = require('gulp');
+const plugins = require('gulp-load-plugins')({camelize: true});
+
+// add shopify config
+config.shopify = require('./shopify.json');
 
 /**
- * Combines/resolves bower-globs from config into
- * a single array of blob paths
+ * Resolves/combines config bower-globs into a
+ * single array
  *
  * @returns {array}
  */
@@ -31,15 +36,38 @@ function getBowerGlobs() {
     return result;
 }
 
-gulp.task('copy-bower', () => {
+/**
+ * Shorthand for calling gulp-shopify-upload
+ */
+function upload(options) {
+    var {
+        api_key,
+        api_password,
+        store_url
+    } = config.shopify;
+
+    return plugins.shopifyUpload(
+        api_key,
+        api_password,
+        store_url,
+        null,
+        options
+    );
+}
+
+gulp.task('clean', () => {
+    return del('.upload');
+});
+
+gulp.task('copy-bower', ['clean'], () => {
     const globs = getBowerGlobs();
     const bower = gulp.src(globs);
 
     return bower
-        .pipe(gulp.dest('.build/assets'));
+        .pipe(gulp.dest('.upload/assets'));
 });
 
-gulp.task('copy-theme', () => {
+gulp.task('copy-assets', ['clean'], () => {
     const src = gulp.src([
         'src/assets/css/*.scss.liquid',
         'src/assets/img/*.jpg',
@@ -49,8 +77,26 @@ gulp.task('copy-theme', () => {
     ]);
 
     return src
-        .pipe(gulp.dest('.build/assets'));
+        .pipe(gulp.dest('.upload/assets'));
 });
 
-gulp.task('copy', ['copy-bower', 'copy-theme']);
+gulp.task('copy-theme', ['clean', 'copy-bower', 'copy-assets'], () => {
+    const theme = gulp.src([
+        'src/**/*',
+        '!src/assets/**/*'
+    ]);
+
+    return theme
+        .pipe(gulp.dest('.upload'));
+});
+
+gulp.task('deploy', ['copy-theme'], () => {
+    const theme = gulp.src('.upload/**/*');
+
+    return theme
+        .pipe(upload({
+            'basePath': '.upload'
+        }));
+});
+
 gulp.task('default', []);
