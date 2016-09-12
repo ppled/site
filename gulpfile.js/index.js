@@ -39,7 +39,7 @@ function getBowerGlobs() {
 /**
  * Shorthand for calling gulp-shopify-upload
  */
-function upload(options) {
+function upload() {
     var {
         api_key,
         api_password,
@@ -51,7 +51,7 @@ function upload(options) {
         api_password,
         store_url,
         null,
-        options
+        {basePath: '.upload'}
     );
 }
 
@@ -59,7 +59,21 @@ gulp.task('clean', () => {
     return del('.upload');
 });
 
-gulp.task('copy-bower', ['clean'], () => {
+gulp.task('watch', ['clean'], () => {
+    const modified = plugins.watch('src/**/*');
+    const options = {
+        flatten: {
+            includeParents: 1
+        }
+    };
+
+    return modified
+        .pipe(plugins.flatten(options.flatten))
+        .pipe(gulp.dest('.upload'))
+        .pipe(upload());
+});
+
+gulp.task('stage-bower', ['clean'], () => {
     const globs = getBowerGlobs();
     const bower = gulp.src(globs);
 
@@ -67,7 +81,7 @@ gulp.task('copy-bower', ['clean'], () => {
         .pipe(gulp.dest('.upload/assets'));
 });
 
-gulp.task('copy-assets', ['clean'], () => {
+gulp.task('stage-assets', ['clean'], () => {
     const src = gulp.src([
         'src/assets/css/*.scss.liquid',
         'src/assets/img/*.jpg',
@@ -80,9 +94,10 @@ gulp.task('copy-assets', ['clean'], () => {
         .pipe(gulp.dest('.upload/assets'));
 });
 
-gulp.task('copy-theme', ['clean', 'copy-bower', 'copy-assets'], () => {
+gulp.task('stage-theme', ['clean', 'stage-bower', 'stage-assets'], () => {
     const theme = gulp.src([
         'src/**/*',
+        '!src/assets',
         '!src/assets/**/*'
     ]);
 
@@ -90,13 +105,11 @@ gulp.task('copy-theme', ['clean', 'copy-bower', 'copy-assets'], () => {
         .pipe(gulp.dest('.upload'));
 });
 
-gulp.task('deploy', ['copy-theme'], () => {
+gulp.task('deploy', ['stage-theme'], () => {
     const theme = gulp.src('.upload/**/*');
 
     return theme
-        .pipe(upload({
-            'basePath': '.upload'
-        }));
+        .pipe(upload());
 });
 
 gulp.task('default', []);
