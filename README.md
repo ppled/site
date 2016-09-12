@@ -4,7 +4,15 @@
 
 ### Shopify API
 
-To set the Shopify API fields, modify and rename `gulpfile.js/shopify-example.json` to `shopify.json`.
+To set the Shopify API fields, create a file named `gulpfile.js/shopify.json`
+
+```json
+{
+    "api_key": "FILL ME IN",
+    "api_password": "FILL ME IN",
+    "store_url": "yourdomain.myshopify.com"
+}
+```
 
 ### Watch & auto-deploy files
 
