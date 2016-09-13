@@ -3,10 +3,12 @@
 const config = require('./config.json');
 const del = require('del');
 const gulp = require('gulp');
+const minimist = require('minimist');
+const flags = require('./flags.js');
 const plugins = require('gulp-load-plugins')({camelize: true});
 
 // add shopify config
-config.shopify = require('./shopify.json');
+config.shopify = require('./shopify-config.js').get();
 
 /**
  * Resolves/combines config bower-globs into a
