@@ -39,7 +39,7 @@ function get() {
     };
 
     // prod
-    if(options.prod) {
+    if(flags.prod) {
         
         if(!configExists(files.prod))
             error('no production shopify config found');
