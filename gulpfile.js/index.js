@@ -3,8 +3,6 @@
 const config = require('./config.json');
 const del = require('del');
 const gulp = require('gulp');
-const minimist = require('minimist');
-const flags = require('./flags.js');
 const plugins = require('gulp-load-plugins')({camelize: true});
 
 // add shopify config
@@ -18,7 +16,7 @@ config.shopify = require('./shopify-config.js').get();
  */
 function getBowerGlobs() {
     const bowerGlobs = config['bower-globs'];
-    var result = [];
+    const result = [];
 
     for(let name in bowerGlobs) {
         let globs = bowerGlobs[name];

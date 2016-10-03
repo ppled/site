@@ -1,13 +1,67 @@
-<header class="section-header">
-    <h1 class="section-header__title">{{ page.title }}</h1>
-</header>
-
-<div class="rte">
-    {{ page.content }}
+<div class="section-header">
+  <h1 class="section-header__title">{{ page.title }}</h1>
 </div>
 
-<hr>
+{% if page.content %}
+  <div class="rte">
+    {{ page.content }}
+  </div>
 
-<form method="post" action="https://api.petersenparts.com/becomeDealer">
-    <button>Submit</button>
+  <hr>
+{% endif %}
+
+<form method="POST" action="">
+
+  {% comment %}
+  {% if form.posted_successfully? %}
+    <p class="note form-success">
+      {{ 'contact.form.post_success' | t }}
+    </p>
+  {% endif %}
+
+  {{ form.errors | default_errors }}
+
+  https://test-store-1855.myshopify.com/admin/customers/4144758145
+  {% endcomment %}
+
+  {% comment %}
+    handle customer info
+  {% endcomment %}
+  {% if customer %}
+    <input type="hidden" id="DealerCustomerId" name="dealer[cust-id]" value="{{ customer.id }}">
+
+    {% assign c-name = customer.name %}
+    {% assign c-email = customer.email %}
+    {% assign c-address = customer.default_address %}
+
+    {% if c-address %}
+      {% assign c-phone = c-address.phone %}
+      {% assign c-city = c-address.city %}
+      {% assign c-province = c-address.province_code %}
+      {% capture c-city-province %}{{ c-city }}, {{ c-province }}{% endcapture %}
+    {% endif %}
+  {% endif %}
+
+  {% assign handle = 'contact.form.name' | t | handle %}
+  {% assign label = 'contact.form.name' | t %}
+  <label for="DealerFormName" class="label--hidden">{{ label }}</label>
+  <input type="text" id="DealerFormName" name="dealer[{{ handle }}]" placeholder="{{ label }}" autocapitalize="words" value="{{ c-name }}">
+
+  {% assign handle = 'contact.form.email' | t | handle %}
+  {% assign label = 'contact.form.email' | t %}
+  <label for="DealerFormEmail" class="label--hidden">{{ label }}</label>
+  <input type="email" id="DealerFormEmail" name="dealer[{{ handle }}]" placeholder="{{ label }}" autocorrect="off" autocapitalize="off" value="{{ c-email }}">
+
+  {% assign handle = 'contact.form.phone' | t | handle %}
+  {% assign label = 'contact.form.phone' | t %}
+  <label for="DealerFormPhone" class="label--hidden">{{ label }}</label>
+  <input type="tel" id="DealerFormPhone" name="dealer[{{ handle }}]" placeholder="{{ label }}" pattern="[0-9\-]*" value="{{ c-phone }}">
+
+  {% assign handle = 'city-province' %}
+  {% assign label = 'City, Province' %}
+  <label for="DealerFormCityProvince" class="label--hidden">{{ label }}</label>
+  <input type="text" id="DealerFormCityProvince" name="dealer[{{ handle }}]" placeholder="{{ label }}" value="{{ c-city-province }}">
+
+  {% assign label = 'contact.form.send' | t %}
+  <input type="submit" class="btn right" value="{{ label }}">
 </form>

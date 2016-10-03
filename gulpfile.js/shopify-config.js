@@ -40,7 +40,7 @@ function get() {
 
     // prod
     if(flags.prod) {
-        
+
         if(!configExists(files.prod))
             error('no production shopify config found');
 
