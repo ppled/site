@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-const minimist = require('minimist');
+const minimist = require('minimist')
 
 // resolve cli options
 module.exports = minimist(process.argv, {
-	prod: false
-});
+  prod: false
+})

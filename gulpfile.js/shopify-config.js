@@ -1,27 +1,27 @@
-'use strict';
+'use strict'
 
-const fs = require('fs');
-const flags = require('./flags.js');
+const fs = require('fs')
+const flags = require('./flags.js')
 
 /**
  * throws the provided error
  */
-function error(message) {
-    throw new Error(message);
+function error (message) {
+  throw new Error(message)
 }
 
 /**
  * @returns {boolean}
  */
-function configExists(filename) {
-    return fs.existsSync(`./gulpfile.js/${filename}.json`);
+function configExists (filename) {
+  return fs.existsSync(`./gulpfile.js/${filename}.json`)
 }
 
 /**
  * @returns {object}
  */
-function getConfig(filename) {
-    return require(`./${filename}.json`);
+function getConfig (filename) {
+  return require(`./${filename}.json`)
 }
 
 /**
@@ -30,42 +30,36 @@ function getConfig(filename) {
  *
  * @returns {object|boolean}
  */
-function get() {
-    var result = false;
-    const files = {
-        dev: 'shopify-dev',
-        prod: 'shopify-prod',
-        std: 'shopify'
-    };
+function get () {
+  var result = false
+  const files = {
+    dev: 'shopify-dev',
+    prod: 'shopify-prod',
+    std: 'shopify'
+  }
 
-    // prod
-    if(flags.prod) {
-
-        if(!configExists(files.prod))
-            error('no production shopify config found');
-
-        else result = getConfig(files.prod);
+  if (flags.prod) {
+    if (!configExists(files.prod)) {
+      error('no production shopify config found')
+    } else {
+      result = getConfig(files.prod)
     }
-
-    // not prod
-    else {
-
-        // dev config
-        if(configExists(files.dev))
-            result = getConfig(files.dev);
-
-        // standard config
-        else if(configExists(files.std))
-            result = getConfig(files.std);
+  } else {
+    if (configExists(files.dev)) {
+      result = getConfig(files.dev)
+    } else if (configExists(files.std)) {
+      result = getConfig(files.std)
     }
+  }
 
-    // no config
-    if(!result)
-        error('no shopify config found');
+  // no config
+  if (!result) {
+    error('no shopify config found')
+  }
 
-    return result;
+  return result
 }
 
 module.exports = {
-    get
-};
+  get
+}
