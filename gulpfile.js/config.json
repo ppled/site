@@ -11,7 +11,6 @@
         "jquery": "dist/jquery.js",
         "jquery-zoom": "jquery.zoom.js",
         "magnific-popup": "dist/jquery.magnific-popup.js",
-        "modernizr": "modernizr.js",
         "timber": [
             "assets/fastclick.min.js",
             "assets/respond.min.js",

@@ -7,7 +7,6 @@
     "jquery": "~1.11.0",
     "jquery-zoom": "^1.7.18",
     "magnific-popup": "^1.1.0",
-    "modernizr": "~2.8.2",
     "timber": "2.0.2"
   }
 }
