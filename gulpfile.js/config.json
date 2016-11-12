@@ -1,20 +1,20 @@
 {
-    "bower-globs": {
-        "fancybox": [
-            "source/*.gif",
-            "source/*.png",
-            "source/jquery.fancybox.css",
-            "source/jquery.fancybox.js"
-        ],
-        "flexslider": "jquery.flexslider.js",
-        "handlebars": "handlebars.js",
-        "jquery": "dist/jquery.js",
-        "jquery-zoom": "jquery.zoom.js",
-        "magnific-popup": "dist/jquery.magnific-popup.js",
-        "timber": [
-            "assets/fastclick.min.js",
-            "assets/respond.min.js",
-            "assets/respond-proxy.html"
-        ]
-    }
+  "bower-globs": {
+    "fancybox": [
+      "source/*.gif",
+      "source/*.png",
+      "source/jquery.fancybox.css",
+      "source/jquery.fancybox.js"
+    ],
+    "flexslider": "jquery.flexslider.js",
+    "handlebars": "handlebars.js",
+    "jquery": "dist/jquery.js",
+    "jquery-zoom": "jquery.zoom.js",
+    "magnific-popup": "dist/jquery.magnific-popup.js",
+    "timber": [
+      "assets/fastclick.min.js",
+      "assets/respond.min.js",
+      "assets/respond-proxy.html"
+    ]
+  }
 }
