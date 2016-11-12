@@ -8,7 +8,7 @@ const u = require('./utils.js')
  */
 function getConfigFile (filename) {
   try {
-    return require(`./${filename}.json`)
+    return require(`${__dirname}/../${filename}.json`)
   } catch (error) {
     return false
   }
