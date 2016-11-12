@@ -8,20 +8,30 @@ To set the Shopify API fields, create a file named `gulpfile.js/shopify.json`
 
 ```json
 {
-  "api_key": "FILL ME IN",
-  "api_password": "FILL ME IN",
-  "store_url": "yourdomain.myshopify.com"
+  "api_key": "",
+  "api_password": "",
+  "store_url": "domain.myshopify.com"
 }
 ```
 
-### Watch & auto-deploy files
+### Watch & auto-deploy
 
 ```bash
 gulp watch
 ```
 
-### Full theme deployment
+### Manually deploy
 
 ```bash
 gulp deploy
 ```
+
+### Options
+
+#### --prod
+
+```bash
+gulp deploy --prod
+```
+
+Deploys to the production store. To use this, instead of `gulpfile.js/shopify.json`, you'll need `shopify-dev.json` and `shopify-prod.json` respectively
