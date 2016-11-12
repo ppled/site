@@ -1,5 +1,6 @@
 {
   "name": "petersen-parts",
+  "private": true,
   "devDependencies": {
     "fancybox": "^2.1.5",
     "flexslider": "^2.6.3",
