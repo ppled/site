@@ -21,7 +21,7 @@ function stageBower () {
   const assets = gulp.src(globs)
 
   return assets
-    .pipe(g.cached('stage-bower'))
+    .pipe(g.cache.store())
     .pipe(gulp.dest(`${STAGING_DIR}/assets`))
 }
 
@@ -38,7 +38,7 @@ function stageAssets () {
   ])
 
   return assets
-    .pipe(g.cached('stage-assets'))
+    .pipe(g.cache.store())
     .pipe(gulp.dest(`${STAGING_DIR}/assets`))
 }
 
@@ -53,20 +53,18 @@ function stageTheme () {
   ])
 
   return theme
-    .pipe(g.cached('stage-theme'))
+    .pipe(g.cache.store())
     .pipe(gulp.dest(STAGING_DIR))
 }
 
 /**
  * Deploys staged theme files to Shopify store
  */
- // TODO: build new cache plugin that stores cache locally for next build
  // TODO: track deleted files and remove them from remote
 function deploy () {
   const theme = gulp.src(`${STAGING_DIR}/**/*.*`)
 
   return theme
-    .pipe(g.cached('deploy'))
     .pipe(g.upload(STAGING_DIR))
 }
 

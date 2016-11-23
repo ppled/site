@@ -25,7 +25,7 @@ function upload (basePath) {
   )
 }
 
-plugins.cache = plugins.cached
+plugins.cache = plugins.localCache
 plugins.upload = upload
 
 module.exports = plugins
