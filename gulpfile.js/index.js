@@ -1,6 +1,5 @@
 'use strict'
 
-const g = require('./lib/plugins.js')
 const gulp = require('gulp')
 const requireDir = require('require-dir')
 
@@ -8,4 +7,3 @@ const requireDir = require('require-dir')
 requireDir('./tasks')
 
 gulp.task('default', ['deploy:stage'])
-gulp.task('clear-cache', g.cache.clear)

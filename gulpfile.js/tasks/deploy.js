@@ -21,7 +21,7 @@ function stageBower () {
   const assets = gulp.src(globs)
 
   return assets
-    .pipe(g.cache.store())
+    .pipe(g.cache.filter())
     .pipe(gulp.dest(`${STAGING_DIR}/assets`))
 }
 
@@ -38,7 +38,7 @@ function stageAssets () {
   ])
 
   return assets
-    .pipe(g.cache.store())
+    .pipe(g.cache.filter())
     .pipe(gulp.dest(`${STAGING_DIR}/assets`))
 }
 
@@ -53,7 +53,7 @@ function stageTheme () {
   ])
 
   return theme
-    .pipe(g.cache.store())
+    .pipe(g.cache.filter())
     .pipe(gulp.dest(STAGING_DIR))
 }
 

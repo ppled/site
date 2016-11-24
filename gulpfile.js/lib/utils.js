@@ -1,6 +1,7 @@
 'use strict'
 
 const config = require('./config.js')
+const flags = require('./flags.js')
 
 /**
  * throws the provided error
@@ -38,7 +39,17 @@ function getBowerGlobs () {
   return result
 }
 
+/**
+ * @returns {string}
+ */
+function getCachePath () {
+  const filename = flags.prod ? 'prod' : 'dev'
+
+  return `.cache/${filename}`
+}
+
 module.exports = {
   error,
+  getCachePath,
   getBowerGlobs
 }

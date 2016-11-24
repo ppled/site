@@ -2,6 +2,7 @@
 
 const config = require('./config.js')
 const loadPlugins = require('gulp-load-plugins')
+const u = require('./utils.js')
 const plugins = loadPlugins({ camelize: true })
 const shopifyUpload = plugins.shopifyUpload
 
@@ -25,7 +26,11 @@ function upload (basePath) {
   )
 }
 
+// aliases
 plugins.cache = plugins.localCache
 plugins.upload = upload
+
+// cache path
+plugins.cache.path(u.getCachePath())
 
 module.exports = plugins
