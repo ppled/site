@@ -1,6 +1,7 @@
 'use strict'
 
 const config = require('./config.js')
+const each = require('u-each')
 const flags = require('./flags.js')
 
 /**
@@ -13,21 +14,19 @@ function getBowerGlobs () {
   const bowerGlobs = config['bower-globs']
   const result = []
 
-  for (let name in bowerGlobs) {
-    let globs = bowerGlobs[name]
-
+  each(bowerGlobs, (name, globs) => {
     // convert to array
     if (typeof globs === 'string') {
       globs = [globs]
     }
 
     // add globs
-    globs.forEach(glob => {
-      var fullpath = `bower_components/${name}/${glob}`
+    each(globs, glob => {
+      const fullpath = `bower_components/${name}/${glob}`
 
       result.push(fullpath)
     })
-  }
+  })
 
   return result
 }
