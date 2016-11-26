@@ -3,8 +3,20 @@
 const config = require('./config.js')
 const loadPlugins = require('gulp-load-plugins')
 const u = require('./utils.js')
-const plugins = loadPlugins({ camelize: true })
-const shopifyUpload = plugins.shopifyUpload
+const plugins = loadPlugins({
+  camelize: true,
+  rename: {
+    'gulp-local-cache': 'cache'
+  },
+  postRequireTransforms: {
+    cache: cache => {
+      // set cache path
+      cache.path(u.getCachePath())
+
+      return cache
+    }
+  }
+})
 
 /**
  * Wrapper for gulp-shopify-upload that fills in shopify
@@ -17,7 +29,7 @@ function upload (basePath) {
     store_url
   } = config.shopify
 
-  return shopifyUpload(
+  return plugins.shopifyUpload(
     api_key,
     api_password,
     store_url,
@@ -26,11 +38,7 @@ function upload (basePath) {
   )
 }
 
-// aliases
-plugins.cache = plugins.localCache
+// add upload wrapper
 plugins.upload = upload
-
-// cache path
-plugins.cache.path(u.getCachePath())
 
 module.exports = plugins
