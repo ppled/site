@@ -1,7 +1,13 @@
 'use strict'
 
 const flags = require('./flags.js')
-const u = require('./utils.js')
+
+/**
+ * throws the provided error
+ */
+function error (message) {
+  throw new Error(message)
+}
 
 /**
  * @returns {object}
@@ -43,7 +49,7 @@ function getShopify () {
   }
 
   if (!result) {
-    u.error('no shopify config found')
+    error('no shopify config found')
   }
 
   return result
@@ -58,7 +64,7 @@ function get () {
   const result = getConfigFile('config')
 
   if (!result) {
-    u.error('no config found')
+    error('no config found')
   } else {
     result.shopify = getShopify()
   }

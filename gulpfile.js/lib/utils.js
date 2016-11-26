@@ -4,13 +4,6 @@ const config = require('./config.js')
 const flags = require('./flags.js')
 
 /**
- * throws the provided error
- */
-function error (message) {
-  throw new Error(message)
-}
-
-/**
  * Resolves/combines config bower-globs into a
  * single array
  *
@@ -49,7 +42,6 @@ function getCachePath () {
 }
 
 module.exports = {
-  error,
   getCachePath,
   getBowerGlobs
 }
