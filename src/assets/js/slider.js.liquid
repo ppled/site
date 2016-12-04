@@ -21,7 +21,10 @@ timberSlider.sliders = function () {
         keyboard: false,
         slideshow: {{ settings.slider_home_auto }},
         slideshowSpeed: {{ settings.slider_home_rate }},
-        smoothHeight: true
+        smoothHeight: true,
+        start: function () {
+          timberSlider.cache.$slider.removeClass('loading')
+        }
       };
 
   if ($slider.length) {
