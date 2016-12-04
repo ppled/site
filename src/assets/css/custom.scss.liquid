@@ -1,10 +1,12 @@
-$small: 480px;
-$medium: 768px;
-$large: 769px;
+$xs-max: 480px;
+$sm-max: 600px;
+$md-min: ($sm-max + 1);
+$md-max: 768px;
+$lg-min: ($md-max + 1);
 
 .wrapper.main-content {
-    
-    @media screen and (max-width: 600px) {
+
+    @media screen and (max-width: $sm-max) {
         margin-top: 40px;
     }
 }
@@ -13,7 +15,7 @@ $large: 769px;
 
     & + hr {
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: $sm-max) {
             margin-top: 10px;
         }
     }
@@ -21,14 +23,14 @@ $large: 769px;
     .slides img {
         display: none;
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: $sm-max) {
 
             &.slide-image-sm {
                 display: block;
             }
         }
 
-        @media screen and (min-width: 601px) {
+        @media screen and (min-width: $md-min) {
 
             &.slide-image-lg {
                 display: block;
@@ -49,8 +51,8 @@ $large: 769px;
 }
 
 .grid-link--focus {
-    
-    @media screen and (min-width: 601px) {
+
+    @media screen and (min-width: $md-min) {
         padding: 25px;
     }
 }
@@ -58,22 +60,22 @@ $large: 769px;
 .grid-link__image {
     background-color: #fff;
 
-    @media screen and (min-width: 601px) {
+    @media screen and (min-width: $md-min) {
         margin: 0 auto 15px;
     }
 
     img {
 
-    	@media screen and (min-width: 601px) and (max-width: $medium) {
-        	max-height: 200px;
+      	@media screen and (min-width: $md-min) and (max-width: $md-max) {
+          	max-height: 200px;
         }
     }
 }
 
 .grid-link__image-centered {
 
-	@media screen and (min-width: 601px) and (max-width: $medium) {
-		height: 200px;
+  	@media screen and (min-width: $md-min) and (max-width: $md-max) {
+  		  height: 200px;
     }
 }
 
@@ -82,7 +84,7 @@ $large: 769px;
     padding-right: 20px;
     float: left;
 
-    @media screen and (max-width: $small) {
+    @media screen and (max-width: $xs-max) {
         width: 100%;
         margin-bottom: 15px;
         padding: 0;
