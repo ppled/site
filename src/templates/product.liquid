@@ -19,10 +19,10 @@
                 {% if settings.product_image_effect == 'image-zoom' %}
 
                     <div class="product-single__photos" id="ProductPhoto">
-                        <img 
-                            src="{{ featured_image | img_url: '1024x1024' }}" 
-                            alt="{{ featured_image.alt | escape }}" 
-                            id="ProductPhotoImg" 
+                        <img
+                            src="{{ featured_image | img_url: '1024x1024' }}"
+                            alt="{{ featured_image.alt | escape }}"
+                            id="ProductPhotoImg"
                             data-zoom="{{ featured_image | img_url: '1024x1024' }}"
                         >
                     </div>
@@ -47,6 +47,8 @@
                     <h3 itemprop="brand">{{ product.vendor }}</h3>
                 {% endif %}
                 <h1 itemprop="name">{{ product.title }}</h1>
+
+                <div id="stock-indicator" class="stock-indicator"></div>
 
                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                     {% assign variant = product.selected_or_first_available_variant %}
@@ -181,6 +183,8 @@
                 unavailable : "{{ 'products.product.unavailable' | t }}"
             }
         });
+
+        PP.stock.update(variant);
     };
 
     jQuery(function($) {
@@ -202,4 +206,7 @@
             $('.selector-wrapper').hide();
         {% endif %}
     });
+
+    // init product stock
+    PP.stock.init('{{ product.tags | join: " " }}');
 </script>
