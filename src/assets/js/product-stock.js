@@ -6,7 +6,7 @@
   PP.stock = factory()
 })(function () {
   var store = {
-    stockTag: false
+    estimate: false
   }
 
   /**
@@ -21,6 +21,10 @@
         status = 'in stock'
       } else {
         status = 'in stock soon'
+
+        if (store.estimate) {
+          status += '; ' + store.estimate
+        }
       }
     } else {
       status = 'out of stock'
@@ -34,15 +38,21 @@
    * indicator
    */
   function init (tags) {
+    var stockTag
+
     tags
       .split(' ')
       .forEach(function (tag) {
-        var regex = /stock-soon/
+        var regex = /^stock-soon(:\d{1,2}[dmw])?/i
 
         if (regex.test(tag)) {
-          store.stockTag = tag
+          stockTag = tag
         }
       })
+
+    if (stockTag.indexOf(':')) {
+      // TODO: parse estimate tag
+    }
   }
 
   return {
