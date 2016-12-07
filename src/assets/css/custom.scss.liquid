@@ -142,6 +142,67 @@ $lg-min: ($md-max + 1);
     }
 }
 
+.product-single {
+
+    .stock-indicator {
+        line-height: 20px;
+        margin-bottom: 15px;
+        font-size: 20px;
+
+        > .fa {
+            margin-right: 5px;
+        }
+
+        > span {
+            display: inline-block;
+        }
+
+        > .separator {
+            margin: 0 10px;
+        }
+
+        > .estimate {
+            font-size: 14px;
+        }
+
+        &.in {
+
+            > .fa,
+            > .status {
+                color: #2d793a;
+            }
+
+            > .fa:before {
+                content: '\f05d';
+            }
+        }
+
+        &.out {
+
+            > .fa,
+            > .status {
+                color: #ed0000;
+            }
+
+            > .fa:before {
+                content: '\f05c';
+            }
+        }
+
+        &.soon {
+
+            > .fa,
+            > .status {
+                color: #2d793a;
+            }
+
+            > .fa:before {
+                content: '\f017';
+            }
+        }
+    }
+}
+
 .about-float-img {
     width: 300px;
     padding-right: 20px;
