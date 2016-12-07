@@ -34,24 +34,23 @@
   }
 
   /**
-   * Finds the stock-soon tag and initializes the stock
-   * indicator
+   * Parses the stock estimate tag
    */
   function init (tags) {
-    var stockTag
+    var estimate
 
     tags
       .split(' ')
       .forEach(function (tag) {
-        var regex = /^stock-soon(:\d{1,2}[dmw])?/i
+        var regex = /^stock-soon:\d{1,2}[dmw]/i
 
         if (regex.test(tag)) {
-          stockTag = tag
+          estimate = tag.split(':')[1]
         }
       })
 
-    if (stockTag.indexOf(':')) {
-      // TODO: parse estimate tag
+    if (estimate) {
+      store.estimate = estimate
     }
   }
 
