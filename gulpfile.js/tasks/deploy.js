@@ -21,7 +21,6 @@ function stageBower () {
   const assets = gulp.src(globs)
 
   return assets
-    .pipe(g.cache.filter())
     .pipe(gulp.dest(`${STAGING_DIR}/assets`))
 }
 
@@ -29,16 +28,10 @@ function stageBower () {
  * Compiles and stages assets
  */
 function stageAssets () {
-  const assets = gulp.src([
-    'src/assets/css/*.scss.liquid',
-    'src/assets/img/*.jpg',
-    'src/assets/img/*.png',
-    'src/assets/js/*.js',
-    'src/assets/js/*.js.liquid'
-  ])
+  const assets = gulp.src('src/assets/**/*.*')
 
   return assets
-    .pipe(g.cache.filter())
+    .pipe(g.flatten())
     .pipe(gulp.dest(`${STAGING_DIR}/assets`))
 }
 
@@ -48,12 +41,10 @@ function stageAssets () {
 function stageTheme () {
   const theme = gulp.src([
     'src/**/*.*',
-    '!src/assets',
     '!src/assets/**/*'
   ])
 
   return theme
-    .pipe(g.cache.filter())
     .pipe(gulp.dest(STAGING_DIR))
 }
 
@@ -65,6 +56,7 @@ function deploy () {
   const theme = gulp.src(`${STAGING_DIR}/**/*.*`)
 
   return theme
+    .pipe(g.cache.filter())
     .pipe(g.upload(STAGING_DIR))
 }
 
