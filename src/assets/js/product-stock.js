@@ -62,10 +62,17 @@
   /**
    * @returns {string}
    */
+  // TODO: cleanup
   function convertEstimate (est) {
-    return est
-      .replace(/(\d+)w/, "$1 weeks") // eslint-disable-line quotes
-      .replace(/(\d+)m/, "$1 months") // eslint-disable-line quotes
+    let result = est
+      .replace(/(\d+)w/, "$1 week") // eslint-disable-line quotes
+      .replace(/(\d+)m/, "$1 month") // eslint-disable-line quotes
+
+    if (result[0] !== '1') {
+      result += 's'
+    }
+
+    return result
   }
 
   /**
