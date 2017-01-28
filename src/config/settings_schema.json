@@ -437,6 +437,17 @@
         "label": "Show search bar"
     }]
 }, {
+    "name": "Promo Bar",
+    "settings": [{
+        "type": "checkbox",
+        "id": "promo_bar_enabled",
+        "label": "Enabled"
+    }, {
+        "type": "textarea",
+        "id": "promo_bar_content",
+        "label": "Content"
+    }]
+}, {
     "name": "Sidebar",
     "settings": [{
         "type": "checkbox",

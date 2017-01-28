@@ -34,6 +34,45 @@ $lg-min: ($md-max + 1);
     }
 }
 
+.promo-bar {
+  background-color: rgba(245, 188, 42, .2);
+  width: 100%;
+  text-align: center;
+
+  .bar-body {
+    line-height: 1;
+    padding: 15px 0;
+
+    strong {
+      text-transform: uppercase;
+    }
+
+    span,
+    .vr {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .vr {
+      background-color: #43484d;
+      width: 1px;
+      height: 16px;
+      margin: 0 10px;
+    }
+
+    .red {
+      color: #e74c3c;
+    }
+
+    .filler,
+    .vr {
+      @media screen and (max-width: $md-max) {
+        display: none;
+      }
+    }
+  }
+}
+
 .flexslider {
     overflow: hidden;
 
