@@ -3,7 +3,8 @@ window.timberSlider = window.timberSlider || {};
 timberSlider.cacheSelectors = function () {
   timberSlider.cache = {
     // Home Page
-    $slider: $('.flexslider')
+    $slider: $('.flexslider'),
+    $navButtons: $('.flexslider .flex-direction-nav a')
   }
 };
 
@@ -23,6 +24,7 @@ timberSlider.sliders = function () {
         slideshowSpeed: {{ settings.slider_home_rate }},
         smoothHeight: true,
         controlNav: false,
+        customDirectionNav: timberSlider.cache.$navButtons,
         start: function () {
           timberSlider.cache.$slider.removeClass('loading')
         }

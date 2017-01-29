@@ -1,5 +1,6 @@
 {% assign slider_enabled = true %}
 <div class="flexslider loading">
+
     <ul class="slides">
         {% for i in (1..6) %}
             {% capture slide %}slide_{{ i }}{% endcapture %}
@@ -17,7 +18,21 @@
             {% endif %}
         {% endfor %}
     </ul>
+
     <div class="height-fill">
       <span class="load-pulse"></span>
     </div>
+
+    <ul class="flex-direction-nav">
+      <li class="flex-nav-prev">
+        <a class="fa flex-prev" href="#">
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="flex-nav-next">
+        <a class="fa flex-next" href="#">
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
 </div>
