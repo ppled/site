@@ -6,30 +6,29 @@
   PP.stock = factory()
 })(function () {
   var store = {
-    estimate: false
+    atcText: {
+      in: 'Add to Cart',
+      soon: 'Pre-order',
+      out: 'Sold Out'
+    },
+    estimate: false,
+    statusText: {
+      in: 'In stock',
+      soon: 'In stock soon. Pre-order now',
+      out: 'Out of stock'
+    }
   }
 
   /**
    * Updates the indicator according to the provided status
    */
   function applyStatus (status) {
+    var $atc = $('button#AddToCart > span')
     var $indicator = $('#stock-indicator')
     var estimate = ''
-    var title = ''
-
-    switch (status) {
-      case 'in':
-        title = 'In stock'
-        break
-      case 'soon':
-        title = 'In stock soon. Pre-order now'
-        break
-      case 'out':
-        title = 'Out of stock'
-    }
 
     if (status === 'soon' && store.estimate) {
-      estimate = `<span class="separator">|</span><span class="estimate">Estimated ${store.estimate}</span>`
+      estimate = '<span class="separator">|</span><span class="estimate">Estimated ' + store.estimate + '</span>'
     }
 
     $indicator
@@ -37,7 +36,9 @@
       .removeClass('soon')
       .removeClass('out')
       .addClass(status)
-      .html(`<i class="fa"></i><span class="status">${title}</span>${estimate}`)
+      .html('<i class="fa"></i><span class="status">' + store.statusText[status] + '</span>' + estimate)
+
+    $atc.text(store.atcText[status])
   }
 
   /**
