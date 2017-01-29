@@ -139,6 +139,12 @@
         </div>
     </div>
 
+    {% if settings.social_sharing_products %}
+        <hr class="hr--clear hr--small">
+        <h4 class="small--text-center">{{ 'products.general.share_title' | t }}</h4>
+        {% include 'social-sharing' %}
+    {% endif %}
+
     <hr class="hr--clear hr--small">
     <ul class="inline-list tab-switch__nav section-header">
         <li>
@@ -159,12 +165,6 @@
         <div class="tab-switch__content" data-content="review">
             <div id="shopify-product-reviews" class="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
         </div>
-    {% endif %}
-
-    {% if settings.social_sharing_products %}
-        <hr class="hr--clear hr--small">
-        <h4 class="small--text-center">{{ 'products.general.share_title' | t }}</h4>
-        {% include 'social-sharing' %}
     {% endif %}
 
     {% include 'additional-products' %}
