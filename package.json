@@ -4,6 +4,9 @@
     "node": "^6.0.0"
   },
   "scripts": {
+    "deploy": "gulp deploy",
+    "deploy-prod": "gulp deploy --prod",
+    "deploy-w": "gulp watch",
     "postinstall": "bower install"
   },
   "devDependencies": {
